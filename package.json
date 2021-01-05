@@ -1,0 +1,28 @@
+{
+  "name": "my-webpack-app",
+  "version": "1.0.0",
+  "description": "a webpack test app",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development",
+    "serve": "webpack-dev-server --config webpack.config.js --progress --profile --watch --content-base /dist/"
+  },
+  "author": "sunss",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.8",
+    "webpack-dev-server": "^3.11.1"
+  },
+  "dependencies": {
+    "antd": "^4.10.0",
+    "lodash": "^4.17.20",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}
