@@ -5,9 +5,9 @@ module.exports = {
     // jsx 编译器 https://www.babeljs.cn/docs/babel-preset-react
     [
       "@babel/preset-react",
-      {
-        development: process.env.BABEL_ENV === "development",
-      },
+      // {
+      //   development: process.env.BABEL_ENV === "development",
+      // },
     ],
     // ES6 ES7 编译器 https://www.babeljs.cn/docs/babel-preset-env
     [
@@ -16,6 +16,15 @@ module.exports = {
         targets: {
           esmodules: true,
         },
+      },
+    ],
+  ],
+  plugins: [
+    [
+      "import",
+      {
+        libraryName: "antd",
+        style: true,
       },
     ],
   ],
