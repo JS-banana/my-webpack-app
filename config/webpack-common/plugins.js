@@ -1,7 +1,12 @@
 const webpack = require("webpack");
 const { resolve } = require("path");
 const glob = require("glob");
-const { isDev, PROJECT_PATH, shouldOpenAnalyzer } = require("../constants");
+const {
+  isDev,
+  PROJECT_PATH,
+  shouldOpenAnalyzer,
+  hash,
+} = require("../constants");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -53,7 +58,8 @@ module.exports = [
     color: "#fa8c16",
   }),
   // 包依赖分析
-  shouldOpenAnalyzer &&
+  !isDev &&
+    shouldOpenAnalyzer &&
     new BundleAnalyzerPlugin({
       analyzerMode: "server",
       analyzerHost: "127.0.0.1",
@@ -62,8 +68,8 @@ module.exports = [
   // 压缩 css 生产环境抽离为单独文件
   !isDev &&
     new MiniCssExtractPlugin({
-      filename: "css/[name].[contenthash:8].css",
-      chunkFilename: "css/[name].[contenthash:8].css",
+      filename: `css/[name]${hash ? ".[contenthash:8]" : ""}.css`,
+      chunkFilename: `css/[name]${hash ? ".[contenthash:8]" : ""}.css`,
       ignoreOrder: false,
     }),
   // 删除无用 css

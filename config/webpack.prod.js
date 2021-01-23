@@ -1,7 +1,7 @@
 const { merge } = require("webpack-merge"); // webpack 配置合并插件
 const common = require("./webpack.common.js");
 const CompressionPlugin = require("compression-webpack-plugin");
-
+const { shouldGzip } = require("./constants");
 const productionGzipExtensions = ["js", "css"];
 
 module.exports = merge(common, {
@@ -10,16 +10,17 @@ module.exports = merge(common, {
   devtool: "none",
   plugins: [
     // 文件压缩插件 gzip
-    new CompressionPlugin({
-      //asset、algorithm默认值为[path].gz[query]、gzip
-      // asset: '[path].gz[query]',
-      // algorithm: 'gzip',
-      // filename:'',
-      test: new RegExp("\\.(" + productionGzipExtensions.join("|") + ")$"),
-      threshold: 10240,
-      minRatio: 0.8,
-    }),
-  ],
+    shouldGzip &&
+      new CompressionPlugin({
+        //asset、algorithm默认值为[path].gz[query]、gzip
+        // asset: '[path].gz[query]',
+        // algorithm: 'gzip',
+        // filename:'',
+        test: new RegExp("\\.(" + productionGzipExtensions.join("|") + ")$"),
+        threshold: 10240,
+        minRatio: 0.8,
+      }),
+  ].filter(Boolean),
   optimization: {
     splitChunks: {
       minSize: 30000,

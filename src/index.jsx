@@ -8,6 +8,7 @@ function App() {
     <Fragment>
       <Button type="primary">primary</Button>
       <Button>default</Button>
+      12335888
     </Fragment>
   );
 }

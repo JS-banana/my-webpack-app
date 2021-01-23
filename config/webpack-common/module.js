@@ -4,16 +4,6 @@ const { isDev } = require("../constants");
 
 module.exports = {
   rules: [
-    // js、jsx、tsx
-    {
-      test: /\.(js|jsx|tsx)$/,
-      exclude: /(node_modules|bower_components)/,
-      loader: "babel-loader",
-      options: {
-        cacheDirectory: true,
-        // presets: ["@babel/preset-env", "@babel/preset-react"],
-      },
-    },
     // less、css、style
     {
       test: /\.css$/,

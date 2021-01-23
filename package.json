@@ -22,6 +22,7 @@
     "copy-webpack-plugin": "^6.4.1",
     "cross-env": "^7.0.3",
     "css-loader": "^5.0.1",
+    "esbuild-loader": "^2.8.0",
     "glob": "^7.1.6",
     "html-webpack-plugin": "^4.5.1",
     "less": "^3.13.1",
